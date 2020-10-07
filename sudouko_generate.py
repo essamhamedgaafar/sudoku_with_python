@@ -1,15 +1,6 @@
 import random
-mainboard = [
-[0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0]
-]
+import numpy as np
+mainboard = np.zeros((9,9))
 
 row1 = mainboard[0]
 row2 = mainboard[1]
@@ -23,7 +14,7 @@ row9 = mainboard[8]
 
 def Square1():
     while True:
-        sq1 = [mainboard[0][0],mainboard[0][1],mainboard[0][2],mainboard[1][0],mainboard[1][1],mainboard[1][2],mainboard[2][0],mainboard[2][1],mainboard[2][2]]
+        sq1 = mainboard[:3,:3].flatten()
         count = 0
         row_move = random.randrange(0,3)
         column_move = random.randrange(0,3)
@@ -46,7 +37,7 @@ def Square1():
 
 def Square2():
     while True:
-        sq2 = [mainboard[0][3],mainboard[0][4],mainboard[0][5],mainboard[1][3],mainboard[1][4],mainboard[1][5],mainboard[2][3],mainboard[2][4],mainboard[2][5]]
+        sq2 = mainboard[0:3,3:6].flatten()
         count = 0
         row_move = random.randrange(0,3)
         column_move = random.randrange(0,3)
@@ -70,7 +61,7 @@ def Square2():
         
 def Square3():
     while True:
-        sq3 = [mainboard[0][6],mainboard[0][7],mainboard[0][8],mainboard[1][6],mainboard[1][7],mainboard[1][8],mainboard[2][6],mainboard[2][7],mainboard[2][8]]
+        sq3 = mainboard[:3,6:9].flatten()
         count = 0
         row_move = random.randrange(0,3)
         column_move = random.randrange(0,3)
@@ -94,7 +85,7 @@ def Square3():
 
 def Square4():
     while True:
-        sq4 = [mainboard[3][0],mainboard[3][1],mainboard[3][2],mainboard[4][0],mainboard[4][1],mainboard[4][2],mainboard[5][0],mainboard[5][1],mainboard[5][2]]
+        sq4 = mainboard[3:6,:3].flatten()
         count = 0
         row_move = random.randrange(0,3)
         row_move = row_move+3
@@ -118,7 +109,7 @@ def Square4():
 
 def Square5():
     while True:
-        sq5 = [mainboard[3][3],mainboard[3][4],mainboard[3][5],mainboard[4][3],mainboard[4][4],mainboard[4][5],mainboard[5][3],mainboard[5][4],mainboard[5][5]]
+        sq5 = mainboard[3:6,3:6].flatten()
         count = 0
         row_move = random.randrange(0,3)
         row_move = row_move+3
@@ -143,7 +134,7 @@ def Square5():
 
 def Square6():
     while True:
-        sq6 = [mainboard[3][6],mainboard[3][7],mainboard[3][8],mainboard[4][6],mainboard[4][7],mainboard[4][8],mainboard[5][6],mainboard[5][7],mainboard[5][8]]
+        sq6 = mainboard[3:6,6:9].flatten()
         count = 0
         row_move = random.randrange(0,3)
         row_move = row_move + 3
@@ -168,7 +159,7 @@ def Square6():
 
 def Square7():
     while True:
-        sq7 = [mainboard[6][0],mainboard[6][1],mainboard[3][2],mainboard[7][0],mainboard[7][1],mainboard[7][2],mainboard[8][0],mainboard[8][1],mainboard[8][2]]
+        sq7 = mainboard[6:9,:3].flatten()
         count = 0
         row_move = random.randrange(0,3)
         row_move = row_move + 6
@@ -192,7 +183,7 @@ def Square7():
 
 def Square8():
     while True:
-        sq8 = [mainboard[6][3],mainboard[6][4],mainboard[3][5],mainboard[7][3],mainboard[7][4],mainboard[7][5],mainboard[8][3],mainboard[8][4],mainboard[8][5]]
+        sq8 = mainboard[6:9,3:6].flatten()
         count = 0
         row_move = random.randrange(0,3)
         row_move = row_move + 6
@@ -217,7 +208,7 @@ def Square8():
 
 def Square9():
     while True:
-        sq9 = [mainboard[6][6],mainboard[6][7],mainboard[3][8],mainboard[7][6],mainboard[7][7],mainboard[7][8],mainboard[8][6],mainboard[8][7],mainboard[8][8]]
+        sq9 = mainboard[6:9,6:9].flatten()
         count = 0
         row_move = random.randrange(0,3)
         row_move = row_move + 6
@@ -243,17 +234,7 @@ def Square9():
 def check_row_column(number,row_move,column_move):
     row_check = True
     column_check = True
-    column = [
-    [mainboard[0][0],mainboard[1][0],mainboard[2][0],mainboard[3][0],mainboard[4][0],mainboard[5][0],mainboard[6][0],mainboard[7][0],mainboard[8][0]],
-    [mainboard[0][1],mainboard[1][1],mainboard[2][1],mainboard[3][1],mainboard[4][1],mainboard[5][1],mainboard[6][1],mainboard[7][1],mainboard[8][1]],
-    [mainboard[0][2],mainboard[1][2],mainboard[2][2],mainboard[3][2],mainboard[4][2],mainboard[5][2],mainboard[6][2],mainboard[7][2],mainboard[8][2]],
-    [mainboard[0][3],mainboard[1][3],mainboard[2][3],mainboard[3][3],mainboard[4][3],mainboard[5][3],mainboard[6][3],mainboard[7][3],mainboard[8][3]],
-    [mainboard[0][4],mainboard[1][4],mainboard[2][4],mainboard[3][4],mainboard[4][4],mainboard[5][4],mainboard[6][4],mainboard[7][4],mainboard[8][4]],
-    [mainboard[0][5],mainboard[1][5],mainboard[2][5],mainboard[3][5],mainboard[4][5],mainboard[5][5],mainboard[6][5],mainboard[7][5],mainboard[8][5]],
-    [mainboard[0][6],mainboard[1][6],mainboard[2][6],mainboard[3][6],mainboard[4][6],mainboard[5][6],mainboard[6][6],mainboard[7][6],mainboard[8][6]],
-    [mainboard[0][7],mainboard[1][7],mainboard[2][7],mainboard[3][7],mainboard[4][7],mainboard[5][7],mainboard[6][7],mainboard[7][7],mainboard[8][7]],
-    [mainboard[0][8],mainboard[1][8],mainboard[2][8],mainboard[3][8],mainboard[4][8],mainboard[5][8],mainboard[6][8],mainboard[7][8],mainboard[8][8]],
-    ]
+    column= [mainboard[:,1].flatten(),mainboard[:,1:2].flatten(),mainboard[:,2:3].flatten(),mainboard[:,3:4].flatten(),mainboard[:,4:5].flatten(),mainboard[:,5:6].flatten(),mainboard[:,6:7].flatten(),mainboard[:,7:8].flatten(),mainboard[:,8:].flatten()]
     if number in mainboard[row_move]:
         row_check = False
     if number in column[column_move]:
